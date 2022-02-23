@@ -7,8 +7,11 @@
 
 {% block body_block %}
     Rango says...
-    hey there partner!<br />
-    <strong>{{ boldmessage }}</strong>
+    {% if user.is_authenticated %}
+        howdy {{ user.username }}!
+    {% else %}
+        hey there partner!
+    {% endif %}
 
     {% if categories %}
     <h2>Most Liked Categories</h2>

@@ -34,14 +34,21 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rango',
+INSTALLED_APPS =[
+    'django.contrib.admin', 
+    'django.contrib.auth', 
+    'django.contrib.contenttypes', 
+    'django.contrib.sessions', 
+    'django.contrib.messages', 
+    'django.contrib.staticfiles', 
+    'rango', 
+]
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher', 
+    'django.contrib.auth.hashers.BCryptPasswordHasher', 
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher', 
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher', 
 ]
 
 MIDDLEWARE = [
@@ -103,6 +110,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    { 
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', 
+        'OPTIONS': { 'min_length': 6, }
+    },
 ]
 
 
@@ -119,6 +130,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'rango:login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
